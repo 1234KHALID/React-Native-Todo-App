@@ -1,4 +1,5 @@
 import { createHomeStyles } from "@/assets/styles/home.styles";
+import EmptyState from "@/components/empty-state";
 import Header from "@/components/header";
 import LoadingSpinner from "@/components/loading-spinner";
 import TodoInput from "@/components/todo-input";
@@ -125,7 +126,7 @@ export default function Index() {
           renderItem={renderTodoItem}
           style={homeStyles.todoList}
           contentContainerStyle={homeStyles.todoListContent}
-          ListEmptyComponent={}
+          ListEmptyComponent={<EmptyState />}
         />
       </SafeAreaView>
     </LinearGradient>
