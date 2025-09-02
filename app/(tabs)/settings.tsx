@@ -1,26 +1,46 @@
-import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { createSettingsStyles } from "@/assets/styles/settings.styles";
+import ProgressStats from "@/components/progress-stats";
+import { useTheme } from "@/hooks/use-theme";
+import { Ionicons } from "@expo/vector-icons";
+import { LinearGradient } from "expo-linear-gradient";
+import React, { useState } from "react";
+import { ScrollView, Text, View } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 const SettingsScreen = () => {
+  const [isAutoSync, setIsAutoSync] = useState(true);
+  const [isNotificationsEnabled, setIsNotificationEnabled] = useState(true);
+  const { colors, isDarkMode, toggleDarkMode } = useTheme();
+
+  const settingStyles = createSettingsStyles(colors);
+
   return (
-    <View style={style.container}>
-      <Text style={style.content}>Settings</Text>
-    </View>
+    <LinearGradient
+      colors={colors.gradients.background}
+      style={settingStyles.container}
+    >
+      <SafeAreaView style={settingStyles.safeArea}>
+        <View style={settingStyles.header}>
+          <View style={settingStyles.titleContainer}>
+            <LinearGradient
+              colors={colors.gradients.primary}
+              style={settingStyles.iconContainer}
+            >
+              <Ionicons name="settings" size={28} color="#ffffff" />
+            </LinearGradient>
+            <Text style={settingStyles.title}>Settings</Text>
+          </View>
+        </View>
+        <ScrollView
+          style={settingStyles.scrollView}
+          contentContainerStyle={settingStyles.content}
+          showsVerticalScrollIndicator={false}
+        >
+          <ProgressStats />
+        </ScrollView>
+      </SafeAreaView>
+    </LinearGradient>
   );
 };
 
 export default SettingsScreen;
-
-const style = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  content: {
-    color: "white",
-    fontSize: 30,
-    marginBottom: 20,
-    fontWeight: "900",
-  },
-});
