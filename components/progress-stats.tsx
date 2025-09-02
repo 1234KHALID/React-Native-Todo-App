@@ -60,7 +60,7 @@ const ProgressStats = () => {
           </View>
           <View>
             <Text style={settingsStyles.statNumber}>{completedTodos}</Text>
-            <Text style={settingsStyles.statLabel}>Completed Todos</Text>
+            <Text style={settingsStyles.statLabel}>Completed</Text>
           </View>
         </LinearGradient>
 
@@ -79,7 +79,7 @@ const ProgressStats = () => {
           </View>
           <View>
             <Text style={settingsStyles.statNumber}>{activeTodos}</Text>
-            <Text style={settingsStyles.statLabel}>Active Todos</Text>
+            <Text style={settingsStyles.statLabel}>Active</Text>
           </View>
         </LinearGradient>
       </View>
